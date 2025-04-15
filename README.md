@@ -40,7 +40,6 @@ Our job is to tile the photos. Some considerations:
   - L is the tile level,
   - x is the tile's x coordinate and
   - y is the tile's y coordinate. Coordinates start at 0,0 in the top-left corner.
-- To make your setup repeatable, your code should be packaged with any dependencies in a [Docker](https://www.docker.com/) container using a Dockerfile.
 
 ### How to run locally
 
