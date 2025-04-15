@@ -1,0 +1,5 @@
+/.idea
+.DS_Store
+tiled-image
+*-tiled/*
+venv/
