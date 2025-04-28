@@ -13,6 +13,9 @@ class Image:
 
     def extract(self, left: int, top: int, width: int, height: int) -> 'Image':
         """Extracts a region from the image."""
+        if left + width > self.width or top + height > self.height:
+            raise ValueError("Invalid extract")
+
         cropped_image = self.image.crop((left, top, left + width, top + height))
         return Image(cropped_image)
 

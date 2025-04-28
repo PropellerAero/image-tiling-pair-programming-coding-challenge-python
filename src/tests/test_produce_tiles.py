@@ -32,10 +32,8 @@ class TestProduceTiles(unittest.TestCase):
     # We patch get_number_of_levels_for_image to force 3 levels for a 4x4 image,
     # matching the expected TS behavior. In TS:
     #   [[4, 4], 3]
-    @patch("src.produce_tiles.get_number_of_levels_for_image", return_value=3)
     @patch("src.produce_tiles.prepare_level_directory", new=lambda path, level: f"{path}/{level}")
-    @patch("src.produce_tiles.get_image_name", new=lambda x, y: f"{x}_{y}.png")
-    def test_square_equal_max_tile_dimension(self, mock_get_levels):
+    def test_square_equal_max_tile_dimension(self):
         # For a 4x4 image and max_tile_dimension = 4 we expect three saved tiles.
         image = create_image_mock(4, 4, self.mock_save)
         produce_tiles(image, "path", 4)
@@ -47,10 +45,8 @@ class TestProduceTiles(unittest.TestCase):
         actual_calls = [args[0] for args, kwargs in self.mock_save.call_args_list]
         self.assertEqual(actual_calls, expected_calls)
 
-    @patch("src.produce_tiles.get_number_of_levels_for_image", return_value=3)
     @patch("src.produce_tiles.prepare_level_directory", new=lambda path, level: f"{path}/{level}")
-    @patch("src.produce_tiles.get_image_name", new=lambda x, y: f"{x}_{y}.png")
-    def test_square_double_max_tile_dimension(self, mock_get_levels):
+    def test_square_double_max_tile_dimension(self):
         # TODO: Write this test
         self.fail("TODO: Write this test")
 
